@@ -25,8 +25,8 @@ namespace gardenBox
 
             Console.WriteLine($"The area of your box is:  {area} sqft");
 
-            SqlCommand print = new SqlCommand("Select Id, plants from Crops", connection);
-            reader = print.ExecuteReader();
+            SqlCommand plantQuery = new SqlCommand("Select Id, plants from Crops", connection);
+            reader = plantQuery.ExecuteReader();
             if (reader.HasRows)
             {
                 while (reader.Read())
@@ -40,8 +40,8 @@ namespace gardenBox
             Console.WriteLine("Which crop would you like to plant? Please choose an ID.");
             int userCrop = Convert.ToInt32(Console.ReadLine());
 
-            SqlCommand userplant = new SqlCommand($"Select numpersq as num from Crops where Id ='{userCrop}'", connection);
-            reader = userplant.ExecuteReader();
+            SqlCommand userPlantQuery = new SqlCommand($"Select numpersq as num from Crops where Id ='{userCrop}'", connection);
+            reader = userPlantQuery.ExecuteReader();
             decimal num = 0;
             if (reader.HasRows)
             {
